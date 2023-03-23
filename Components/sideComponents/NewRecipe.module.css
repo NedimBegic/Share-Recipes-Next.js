@@ -1,0 +1,301 @@
+.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+/*  form of the input */
+.all form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.all input {
+  text-align: center;
+  height: 2em;
+  border: none;
+  box-shadow: 0 0 10px black;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+
+.all input:focus,
+.all input:active {
+  border: transparent;
+  border-bottom: 3px solid red;
+}
+/*  the title of the recipe */
+.title {
+  width: 70%;
+  max-width: 70em;
+  font-weight: bold;
+}
+
+/* Description */
+
+.all form > textarea {
+  width: 90%;
+  max-width: 70em;
+}
+/*  info about the recipe */
+.info {
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.all label {
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 1em;
+  padding-bottom: 0.5em;
+}
+
+.all select {
+  width: 90%;
+  margin-left: 1em;
+  padding: 1em;
+  font-size: 1.1em;
+  max-width: 25em;
+  box-shadow: 0 0 10px black;
+  border-radius: 5px;
+  border: none;
+}
+
+.info select option {
+  font-size: 1.3em;
+}
+
+.info div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*  preparation fo the recipe */
+
+.preparation {
+  width: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.preparation div {
+  display: flex;
+  flex-direction: column;
+}
+
+.preparation select {
+  margin-bottom: 0.8em;
+}
+
+.preparation select option {
+  font-size: 1.3em;
+}
+
+/* ingrediants */
+
+.ingredients {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+.ingredients h4 {
+  width: 2em;
+  text-align: center;
+  font-size: 1.3em;
+  margin-bottom: 0.3em;
+  background-color: blue;
+  align-self: flex-start;
+  margin-left: 1em;
+  color: white;
+  border-radius: 5px;
+  margin-top: 0;
+}
+
+.ingredients input {
+  width: 90%;
+  max-width: 20em;
+  margin-bottom: 0.4em;
+  height: 2.5em;
+}
+
+.ingredients select {
+  margin: 0;
+}
+
+.ingredients option {
+  font-size: 1.3em;
+}
+
+.button {
+  align-self: flex-start;
+  margin-left: 1.6em;
+  width: 10em;
+  height: 3em;
+}
+
+.divIng {
+  display: flex;
+  flex-direction: column;
+}
+/* Procedure steps */
+
+.steps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+.steps h4 {
+  width: 2em;
+  text-align: center;
+  font-size: 1.3em;
+  margin-bottom: 0.3em;
+  background-color: blue;
+  align-self: flex-start;
+  margin-left: 1em;
+  color: white;
+  border-radius: 5px;
+  margin-top: 0;
+}
+
+/* insert media */
+.media {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.media input {
+  width: 90%;
+  margin-bottom: 1em;
+  display: flex;
+}
+
+.all p {
+  align-self: flex-start;
+  margin-left: 1em;
+  margin-top: 0;
+}
+
+.mediaPic::-webkit-file-upload-button {
+  height: 100%;
+  border: none;
+  align-self: flex-end;
+}
+
+.submit {
+  font-size: 1.2em;
+  padding: 0.4em 0.8em;
+  margin-bottom: 3em;
+  border-radius: 5px;
+  margin-top: 1em;
+}
+@media (min-width: 500px) {
+  .all form > textarea {
+    width: 60%;
+  }
+
+  .info > div {
+    align-items: center;
+  }
+  .steps {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .preparation > div {
+    align-items: center;
+  }
+  .steps h4 {
+    padding: 0em 0.8em;
+    font-size: 3em;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+  }
+}
+
+@media (min-width: 1000px) {
+  .info {
+    flex-direction: row;
+  }
+
+  .preparation {
+    align-items: center;
+  }
+  .preparation div {
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ingredients {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .ingredients h4 {
+    padding: 0em 0.8em;
+    font-size: 3em;
+    margin: 0;
+    margin-left: 3em;
+  }
+  .ingredients input {
+    width: 30%;
+    height: 2.8em;
+    margin: 0;
+    margin-left: 3em;
+  }
+  .ingredients select {
+    margin-left: 3em;
+    width: 30%;
+  }
+
+  .button {
+    align-items: flex-start;
+    margin-left: 28em;
+  }
+
+  .steps h4 {
+    margin-left: 3em;
+    margin-right: 1em;
+  }
+
+  .steps textarea {
+    width: 59%;
+  }
+
+  .media {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .media input {
+    width: 40%;
+  }
+
+  .all p {
+    margin-left: 6em;
+  }
+}
