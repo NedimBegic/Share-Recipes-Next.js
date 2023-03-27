@@ -158,6 +158,7 @@ const NewRecipe = (props) => {
               <option value="salads">Salads</option>
               <option value="dinner">Dinner</option>
               <option value="cakes">Cakes</option>
+              <option value="burger">Burger</option>
             </select>
           </div>
           <div>
