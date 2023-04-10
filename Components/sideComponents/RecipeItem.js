@@ -5,7 +5,13 @@ import { useRouter } from "next/router";
 
 // need to insert router
 const RecipeItem = (props) => {
+  // use router to set this recipe url to his id
   const router = useRouter();
+
+  // function to open detailed recipe item
+  const showDetailed = () => {
+    router.push("/" + props.id);
+  };
   // changing bgColor of different food types
   let typeBackground = "";
   switch (props.type) {
@@ -50,7 +56,9 @@ const RecipeItem = (props) => {
           <span style={{ background: diffBackground }}>{props.difficulty}</span>
         </div>
         <Likes likes={props.likes} />
-        <button type="button">Read more</button>
+        <button onClick={showDetailed} type="button">
+          Read more
+        </button>
         <span className={recipeStyle.date}>{props.date}</span>
       </div>
     </li>

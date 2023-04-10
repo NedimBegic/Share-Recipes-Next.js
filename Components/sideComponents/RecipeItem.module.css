@@ -2,10 +2,11 @@
   list-style: none;
   background-color: white;
   padding: 0.2em;
+  border-radius: 5px;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   padding-bottom: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   box-shadow: 10px 10px 10px black;
 }
 
@@ -90,6 +91,6 @@
   .list {
     width: 20em;
     height: auto;
-    margin: 2em 5em;
+    margin: 2em 4em;
   }
 }
