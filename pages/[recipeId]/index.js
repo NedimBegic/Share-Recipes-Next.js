@@ -59,6 +59,7 @@ export async function getStaticProps(context) {
         steps: selectedRecipe.steps,
         ingredients: selectedRecipe.ingredients,
         quantity: selectedRecipe.quantity,
+        video: selectedRecipe.video,
         date: selectedRecipe.date,
         likes: selectedRecipe.likes,
         comments: selectedRecipe.comments,

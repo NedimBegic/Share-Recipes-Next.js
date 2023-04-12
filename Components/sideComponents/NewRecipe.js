@@ -232,7 +232,7 @@ const NewRecipe = (props) => {
             ref={videoRef}
             type="text"
             name="videoMedia"
-            placeholder="Insert video url"
+            placeholder="Insert youtube video url"
           />
         </div>
         <button className={styleNewRecipe.submit} type="submit">

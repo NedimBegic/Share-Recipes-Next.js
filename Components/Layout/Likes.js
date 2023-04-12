@@ -25,6 +25,12 @@ const Likes = (props) => {
         <FontAwesomeIcon icon={starR} style={{ color: "gold" }} />
       </span>
     );
+  } else if (likes == 1) {
+    <span>
+      <FontAwesomeIcon icon={starS} style={{ color: "gold" }} />
+      <FontAwesomeIcon icon={starR} style={{ color: "gold" }} />
+      <FontAwesomeIcon icon={starR} style={{ color: "gold" }} />
+    </span>;
   } else {
     return (
       <span>

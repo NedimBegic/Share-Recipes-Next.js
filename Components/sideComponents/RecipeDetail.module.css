@@ -17,11 +17,12 @@
   padding-bottom: 0;
   line-height: 1.5em;
   font-size: 1.1em;
-  border-bottom: 1px solid rgb(109, 109, 236);
+  border-bottom: 1px solid #dbb85f;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   text-align: center;
   text-shadow: 0 0 50px #2a2d34;
+  padding-bottom: 0.4em;
 }
 
 .all div > span {
@@ -106,4 +107,120 @@
   color: #2a2d34;
   font-weight: bold;
   opacity: 0.9;
+  border-bottom: 1px solid #2a2d34;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 20px;
+}
+
+.ingList li:last-child {
+  border-bottom: none;
+}
+
+.steps h4 {
+  color: #dbb85f;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  margin-top: 2em;
+  margin-bottom: -0.8em;
+  text-align: left;
+  background-color: #2a2d34;
+  width: 3em;
+  padding: 0.2em 0.5em;
+  margin-left: 1em;
+  opacity: 0.9;
+  box-shadow: 5px 5px 5px #dbb85f;
+  border-radius: 40px;
+}
+
+.steps ol {
+  padding: 1em;
+  padding-left: 1.3em;
+  padding-right: 0;
+  padding-top: 0;
+  height: auto;
+  font-size: 1.2em;
+}
+
+.steps ol > li::marker {
+  font-weight: bolder;
+  color: #dbb85f;
+  text-shadow: 0 0 1px #2a2d34;
+  font-size: 1.2em;
+  margin-left: 0.7em;
+  margin-right: 0.4em;
+}
+.steps ol li {
+  padding: 1em 0em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+  color: #2a2d34;
+  border-bottom: 2px solid #dbb85f;
+  border-bottom-right-radius: 30px;
+}
+
+.video {
+  max-width: 40em;
+  box-shadow: 0 0 20px #2a2d34;
+  border-radius: 10px;
+}
+
+.rate h4 {
+  margin: 0;
+  padding: 0;
+  margin-top: 2em;
+  font-size: 1.4em;
+  border-bottom: 1px solid #dbb85f;
+  padding-bottom: 0.3em;
+  border-radius: 40px;
+  margin-bottom: 0.7em;
+}
+
+.rate > div {
+  margin-bottom: 1em;
+}
+.smiles {
+  font-size: 2em;
+  color: #2a2d34;
+  padding: 0.5em 0.8em;
+  transition: all 300ms ease-out;
+  box-shadow: 0 0 10px #dbb85f;
+  margin: 0 0.3em;
+  border-radius: 20px;
+}
+
+.smiles:hover {
+  cursor: pointer;
+  background-color: #3d424f;
+}
+
+.smiles:first-child {
+  color: rgb(124, 233, 124);
+}
+
+.smiles:nth-child(2) {
+  color: rgb(193, 193, 55);
+}
+
+.smiles:last-child {
+  color: rgb(234, 81, 81);
+}
+
+@media (min-width: 1300px) {
+  .smiles {
+    color: #2a2d34 !important;
+  }
+  .smiles:first-child:hover {
+    color: rgb(124, 233, 124) !important;
+  }
+
+  .smiles:nth-child(2):hover {
+    color: rgb(193, 193, 55) !important;
+  }
+
+  .smiles:last-child:hover {
+    color: rgb(234, 81, 81) !important;
+  }
 }
