@@ -83,21 +83,52 @@
 .ul {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-bottom: 0em;
   padding: 0;
   padding: 1em;
   gap: 0.1em;
 }
 
+.ul li {
+  width: 90%;
+}
+
+@media (min-width: 600px) {
+  .filterType {
+    justify-content: space-evenly;
+  }
+}
+
 @media (min-width: 800px) {
   .ul {
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     width: 100%;
+  }
+
+  .ul li {
+    width: 40em;
   }
 
   .filterType {
     overflow: auto;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 900px) {
+  .ul {
+    justify-content: center;
+  }
+  .ul li {
+    width: 20em;
+  }
+}
+
+@media (min-width: 1300px) {
+  .ul {
     justify-content: space-evenly;
   }
 }

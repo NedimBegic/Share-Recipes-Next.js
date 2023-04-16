@@ -11,7 +11,6 @@ const AddRecipe = () => {
       },
     });
     const data = await response.json();
-    console.log(data);
   }
   return <NewRecipe giveData={getData} />;
 };

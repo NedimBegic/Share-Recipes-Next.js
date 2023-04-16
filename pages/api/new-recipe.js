@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb";
-import { ObjectId } from "mongodb";
 
 async function handler(req, res) {
   if (req.method === "POST") {
@@ -21,21 +20,42 @@ async function handler(req, res) {
     res.status(201).json({ message: "Recipe insterted" });
   }
   if (req.method === "PUT") {
-    let itemName = req.body.name;
-    let vote = req.body.vote;
-    console.log(typeof itemName, typeof vote);
-    const client = await MongoClient.connect(
-      "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
-    );
-    const db = client.db();
-    // get the collection of the DB
-    const recipesCollection = db.collection("recipes");
-    const recipeForUpdate = await recipesCollection.updateOne(
-      { name: itemName },
-      { $push: { likes: vote } }
-    );
-    client.close();
-    res.status(201).json({ message: "User voted" });
+    if (req.body.name && req.body.vote) {
+      let itemName = req.body.name;
+      let vote = req.body.vote;
+      const client = await MongoClient.connect(
+        "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
+      );
+      const db = client.db();
+      // get the collection of the DB
+      const recipesCollection = db.collection("recipes");
+      const recipeForUpdate = await recipesCollection.updateOne(
+        { name: itemName },
+        { $push: { likes: vote } }
+      );
+      client.close();
+      res.status(201).json({ message: "User voted" });
+    }
+
+    if (req.body.userName && req.body.comment) {
+      let itemName = req.body.name;
+      const client = await MongoClient.connect(
+        "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
+      );
+      const db = client.db();
+      // get the collection of the DB
+      const recipesCollection = db.collection("recipes");
+      const recipeForUpdate = await recipesCollection.updateOne(
+        { name: itemName },
+        {
+          $push: {
+            comments: { name: req.body.userName, comment: req.body.comment },
+          },
+        }
+      );
+      client.close();
+      res.status(201).json({ message: "User voted" });
+    }
   }
 }
 

@@ -4,6 +4,41 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  color: #3d424f;
+}
+
+@keyframes load {
+  from {
+    transform: translateY(5%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.imgBack {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 60vw;
+  height: 100vh;
+  opacity: 1;
+  backdrop-filter: blur(10px);
+  animation: none !important;
+}
+
+.all h1 {
+  border-bottom: 2px solid #dbb85f;
+  padding: 0.3em 1em;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  backdrop-filter: blur(20px);
+  animation-name: load;
+  animation-duration: 900ms;
+  animation-iteration-count: 1;
 }
 /*  form of the input */
 .all form {
@@ -12,13 +47,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation-name: load;
+  animation-duration: 900ms;
+  animation-iteration-count: 1;
 }
 
 .all input {
   text-align: center;
   height: 2em;
   border: none;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px #3d424f;
   font-size: 1.2em;
   border-radius: 5px;
 }
@@ -26,7 +64,8 @@
 .all input:focus,
 .all input:active {
   border: transparent;
-  border-bottom: 3px solid red;
+  border-bottom: 3px solid #dbb85f;
+  outline: none;
 }
 /*  the title of the recipe */
 .title {
@@ -38,8 +77,13 @@
 /* Description */
 
 .all form > textarea {
-  width: 90%;
+  width: 85%;
+  border-radius: 10px;
   max-width: 70em;
+  padding: 1em;
+  border: none;
+  box-shadow: 0 0 10px #3d424f;
+  outline: none;
 }
 /*  info about the recipe */
 .info {
@@ -65,13 +109,15 @@
   padding: 1em;
   font-size: 1.1em;
   max-width: 25em;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px #3d424f;
   border-radius: 5px;
   border: none;
 }
 
 .info select option {
   font-size: 1.3em;
+  background-color: #3d424f;
+  color: #dbb85f;
 }
 
 .info div {
@@ -80,6 +126,9 @@
   flex-direction: column;
 }
 
+.all textarea:focus {
+  border-bottom: 3px solid #dbb85f;
+}
 /*  preparation fo the recipe */
 
 .preparation {
@@ -100,6 +149,8 @@
 
 .preparation select option {
   font-size: 1.3em;
+  background-color: #3d424f;
+  color: #dbb85f;
 }
 
 /* ingrediants */
@@ -119,11 +170,13 @@
   text-align: center;
   font-size: 1.3em;
   margin-bottom: 0.3em;
-  background-color: blue;
+  background-color: #dbb85f;
   align-self: flex-start;
   margin-left: 1em;
   color: white;
   border-radius: 5px;
+  box-shadow: 0 0 10px #3d424f;
+
   margin-top: 0;
 }
 
@@ -140,6 +193,8 @@
 
 .ingredients option {
   font-size: 1.3em;
+  background-color: #3d424f;
+  color: #dbb85f;
 }
 
 .button {
@@ -147,6 +202,20 @@
   margin-left: 1.6em;
   width: 10em;
   height: 3em;
+  background-color: #3d424f;
+  color: #dbb85f;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 15px #dbb85f;
+  font-weight: bold;
+  transition: all 400ms ease-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #dbb85f;
+  color: #3d424f;
+  box-shadow: 0 0 15px #3d424f;
 }
 
 .divIng {
@@ -170,14 +239,21 @@
   text-align: center;
   font-size: 1.3em;
   margin-bottom: 0.3em;
-  background-color: blue;
+  background-color: #dbb85f;
   align-self: flex-start;
+  box-shadow: 0 0 10px #3d424f;
   margin-left: 1em;
   color: white;
   border-radius: 5px;
   margin-top: 0;
 }
 
+.steps textarea {
+  border: none;
+  outline: none;
+  padding: 1em;
+  border-radius: 10px;
+}
 /* insert media */
 .media {
   width: 100%;
@@ -208,8 +284,20 @@
   font-size: 1.2em;
   padding: 0.4em 0.8em;
   margin-bottom: 3em;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-top: 1em;
+  border: none;
+  background-color: rgb(185, 64, 64);
+  color: #dbb85f;
+  box-shadow: 0 0 20px #dbb85f;
+  transition: all 400ms ease-out;
+}
+
+.submit:hover {
+  cursor: pointer;
+  color: rgb(185, 64, 64);
+  background-color: #dbb85f;
+  box-shadow: 0 0 20px rgb(185, 64, 64);
 }
 @media (min-width: 500px) {
   .all form > textarea {
@@ -232,6 +320,12 @@
     font-size: 3em;
     margin-left: 0.5em;
     margin-right: 0.3em;
+  }
+}
+
+@media (min-width: 900px) {
+  .imgBack {
+    width: 30vw;
   }
 }
 

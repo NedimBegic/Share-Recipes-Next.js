@@ -166,7 +166,9 @@
   box-shadow: 0 0 20px #2a2d34;
   border-radius: 10px;
 }
-
+.rate {
+  text-align: center;
+}
 .rate h4 {
   margin: 0;
   padding: 0;
@@ -208,6 +210,114 @@
   color: rgb(234, 81, 81);
 }
 
+.rate > span {
+  color: #dbb85f;
+  text-align: center;
+}
+
+/* comments area */
+
+.comments {
+  width: 90%;
+  max-width: 50em;
+}
+.comments h4 {
+  font-size: 1.4em;
+  margin-top: 1.4em;
+  text-align: left;
+  border-bottom: 3px solid #dbb85f;
+  margin-bottom: 0.7em;
+  border-bottom-right-radius: 40px;
+  padding-bottom: 0.3em;
+}
+
+.comments form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments form input,
+.comments form textarea {
+  height: 2em;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 5px 5px 10px #3d424f;
+}
+
+.comments form textarea {
+  height: 10em;
+}
+
+.comments form button {
+  width: 10em;
+  height: 3em;
+  padding: 0.7em 0.5em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #3d424f;
+  background-color: #dbb85f;
+  color: #3d424f;
+  font-weight: bold;
+  border: none;
+  opacity: 0.9;
+  transition: all 300ms ease-in-out;
+  margin-top: 0.7em;
+}
+
+.comments form button:hover {
+  opacity: 1;
+  cursor: pointer;
+  background-color: #3d424f;
+  color: #dbb85f;
+}
+
+.comments form {
+  border-bottom: 3px dotted #dbb85f;
+  margin-bottom: 1em;
+}
+/*  comment list  */
+
+.commentList {
+  width: 90%;
+  max-width: 50em;
+}
+
+.commentList ul {
+  padding: 0;
+}
+
+.commentList li {
+  list-style: none;
+  text-align: left;
+  border-bottom: 1px double #dbb85f;
+}
+
+.commentList li h5 {
+  font-size: 1.1em;
+  margin-bottom: 0;
+  color: #2a2d34;
+}
+
+.commentList li p {
+  background-color: #3d424f;
+  padding: 1em;
+  border-radius: 20px;
+  color: #dbb85f;
+  margin-top: 0.5em;
+}
+
+.foodLogo {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .all img {
+    height: 30em;
+  }
+}
+
 @media (min-width: 1300px) {
   .smiles {
     color: #2a2d34 !important;
@@ -222,5 +332,23 @@
 
   .smiles:last-child:hover {
     color: rgb(234, 81, 81) !important;
+  }
+}
+
+@media (min-width: 1350px) {
+  .all {
+    width: 50em;
+    padding-left: 2em;
+  }
+
+  .foodLogo {
+    display: block;
+    box-shadow: none !important;
+    border: none;
+    width: 32em !important;
+    height: 35em !important;
+    position: fixed;
+    right: 7em;
+    top: 5em;
   }
 }

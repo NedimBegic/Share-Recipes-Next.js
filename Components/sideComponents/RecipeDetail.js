@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styleDetail from "./RecipeDetail.module.css";
 import Likes from "../Layout/Likes";
+import Up from "./Up";
+import ErrorModule from "./ErrorModule";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceGrinHearts } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { faFaceFrown } from "@fortawesome/free-solid-svg-icons";
+import foodLogo from "../../public/foodLogo.png";
+import Image from "next/image";
 
 const RecipeDetail = (props) => {
-  // make the url of youtebe embed version
+  /*  +++++++++++ states for component +++++++++++++++++ */
+  // paragraph that says if user liked
+  const [didYouLike, setDidYouLike] = useState(false);
+  // state for showing error module
+  const [isError, setIsError] = useState(false);
+  // content of the error module
+  const [contentTxt, setContentText] = useState("");
+  // state to change comments
+  const [comments, setComments] = useState(props.item.comments);
+
+  /* ++++++++++ use ref to store inputs */
+  const nameRef = useRef();
+  const commentRef = useRef();
+  const allDiv = useRef();
+
+  /*++++++++++++  make the url of video embed */
   // find the position of &
   let index_ = props.item.video.indexOf("&");
   // slice everything after &
   let without_ = props.item.video.slice(0, index_);
   // replace watch?v= with embed/
   let embedUrl = without_.replace("watch?v=", "embed/");
-  console.log(props.item.likes);
-  // dinamicaly change color of difficulty
+
+  /* +++++++++++++ function for hiding Error Module +++++++*/
+  const onHideModuleHandler = () => {
+    setIsError(false);
+  };
+
+  /* +++++++++ change color for dificulty */
   let colorDiff = "";
   switch (props.item.difficulty) {
     case "easy":
@@ -28,7 +52,7 @@ const RecipeDetail = (props) => {
       colorDiff = "#FF0E0E";
   }
 
-  // handle the like submit
+  /* ++++++++++ handle like submit */
   async function onLikeSubmit(e) {
     const response = await fetch("/api/new-recipe", {
       method: "PUT",
@@ -40,9 +64,56 @@ const RecipeDetail = (props) => {
         "Content-Type": "application/json",
       },
     });
+    setDidYouLike(true);
   }
+
+  /*+++++++++ adding a comment */
+  async function addCommentHandler(e) {
+    e.preventDefault();
+    // adding error handling if name input is empty
+    if (nameRef.current.value.length < 1) {
+      setIsError(true);
+      setContentText("Name input empty");
+      return;
+    }
+    if (commentRef.current.value.length < 1) {
+      setIsError(true);
+      setContentText("Comment input empty");
+      return;
+    }
+    const response = await fetch("/api/new-recipe", {
+      method: "PUT",
+      body: JSON.stringify({
+        name: props.item.name,
+        userName: nameRef.current.value,
+        comment: commentRef.current.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let author = nameRef.current.value;
+    let authorComment = commentRef.current.value;
+    setComments((prevState) => [
+      {
+        name: author,
+        comment: authorComment,
+      },
+      ...prevState,
+    ]);
+    e.target.reset();
+  }
+
+  /* +++++++++ scroling top  */
+  const scrollUp = () => {
+    allDiv.current.scrollIntoView({ behavior: "smooth" });
+  };
+  /* +++++++++++++++++ THE COMPONENT RENDER ++++++++++++++++++ */
   return (
-    <div className={styleDetail.all}>
+    <div ref={allDiv} className={styleDetail.all}>
+      {isError && (
+        <ErrorModule content={contentTxt} hideModule={onHideModuleHandler} />
+      )}
       <h2>{props.item.name}</h2>
       <div className={styleDetail.description}>
         <p>" {props.item.description} "</p>
@@ -111,7 +182,42 @@ const RecipeDetail = (props) => {
             className={styleDetail.smiles}
           />
         </div>
+        {didYouLike && <span>You voted!</span>}{" "}
       </div>
+      <div className={styleDetail.comments}>
+        <h4>Comments</h4>
+        <form onSubmit={addCommentHandler}>
+          <input
+            ref={nameRef}
+            type="name"
+            name="name"
+            placeholder="your name"
+          />
+          <textarea
+            ref={commentRef}
+            rows="20"
+            cols="10"
+            placeholder="your comment"
+          ></textarea>
+          <button type="submit">Add comment</button>
+        </form>
+      </div>
+      {comments.length > 0 ? (
+        <div className={styleDetail.commentList}>
+          <ul>
+            {comments.reverse().map((item, i) => (
+              <li key={i}>
+                <h5>{item.name}</h5>
+                <p>" {item.comment} "</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p>No comments</p>
+      )}
+      <Up element={allDiv.current} />
+      <Image src={foodLogo} className={styleDetail.foodLogo} />
     </div>
   );
 };

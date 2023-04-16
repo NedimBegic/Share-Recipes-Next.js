@@ -2,6 +2,8 @@
 
 import styleNewRecipe from "../sideComponents/NewRecipe.module.css";
 import { useState, useRef } from "react";
+import foodBack from "../../public/foodBack.png";
+import Image from "next/image";
 
 // component for adding ingredients
 const Ingredient = (props) => {
@@ -30,7 +32,7 @@ const ProcedureSteps = (props) => {
       <textarea
         rows="8"
         cols="38"
-        className="textDesc"
+        className={"textDesc"}
         placeholder="Procedure step"
       ></textarea>
     </div>
@@ -134,6 +136,7 @@ const NewRecipe = (props) => {
   };
   return (
     <div className={styleNewRecipe.all}>
+      {<Image src={foodBack} className={styleNewRecipe.imgBack} />}
       <h1>Add a Recipe</h1>
       <form onSubmit={onSubmitFrom}>
         <input
@@ -226,7 +229,7 @@ const NewRecipe = (props) => {
             className={styleNewRecipe.mediaPic}
             type="text"
             name="picMedia"
-            placeholder="Insert Image"
+            placeholder="Insert Image url"
           />
           <input
             ref={videoRef}

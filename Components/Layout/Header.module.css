@@ -1,12 +1,19 @@
 .header {
-  width: 100vw;
+  width: 100%;
+  overflow-y: hidden;
   height: 4em;
-  background-color: grey;
+  background-color: #9c3116;
+  color: #dbb85f;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   overflow-x: hidden;
+  border: none;
+  box-shadow: 0 0 20px #dbb85f;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  opacity: 0.9;
 }
 
 .header h1 {
