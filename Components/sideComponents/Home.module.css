@@ -1,0 +1,358 @@
+.all {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  top: -3.7em;
+  z-index: 4;
+  overflow: hidden;
+  box-shadow: 0 0 20px #dbb85f;
+}
+
+.infoImg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  position: absolute;
+  z-index: -2;
+}
+
+.info div {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em;
+}
+
+.logo {
+  width: 12em;
+  height: 8em;
+  background-color: #dbb85f;
+  border-radius: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-name: logoAnim;
+  animation-duration: 3s;
+  transition: all ease-in-out;
+}
+
+@keyframes logoAnim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.info div p {
+  padding: 1em;
+  padding-top: 0;
+  font-size: 1.2em;
+  text-align: center;
+  color: #dbb85f;
+  text-shadow: 0 0 30px black;
+  font-weight: bold;
+}
+
+/*  second section quote */
+.firstQuote {
+  width: 100vw;
+  margin-top: -3.7em;
+  padding: 0;
+  background-color: #27282d;
+  padding: 4em 0em;
+  box-shadow: 0 0 20px #dbb85f;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firstQuote div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firstQuote h3 {
+  margin: 0;
+  padding-top: 0.5em;
+  color: #dbb85f;
+}
+
+.julia {
+  border-radius: 50%;
+  width: 15em;
+  height: 15em;
+  box-shadow: 0 0 10px #2f3130;
+}
+.firstQuote q {
+  color: white;
+  padding: 1em;
+  text-align: center;
+  text-shadow: 0 0 40px #dbb85f;
+  line-height: 1.4em;
+  font-size: 1.2em;
+}
+.cezar {
+  position: relative;
+  z-index: 3;
+  width: 100vw;
+  margin-top: -9em;
+  margin-bottom: -7em;
+}
+/* third section */
+.sugestion {
+  background-color: #dbb85f;
+  box-shadow: 0 0 20px #dbb85f;
+  position: relative;
+  z-index: 2;
+  padding: 3em 1em;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.sugestion div {
+  background-color: #2f3130;
+  padding: 3em 1em;
+  border-radius: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 20px #2f3130;
+  overflow-x: hidden;
+}
+
+.sugestion h3 {
+  color: white;
+  font-size: 1.9em;
+  line-height: 1.1em;
+}
+
+.sugestion p {
+  color: #dbb85f;
+  margin-bottom: 2em;
+  font-size: 1.3em;
+  line-height: 1.4em;
+}
+
+.button {
+  font-size: 1.2em;
+  padding: 0.4em 0.8em;
+  text-decoration: none;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(185, 64, 64);
+  color: #dbb85f;
+  box-shadow: 0 0 20px #dbb85f;
+  transition: all 400ms ease-out;
+  font-weight: bold;
+  font-size: 1.5em;
+  animation-name: bump;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: rgb(185, 64, 64);
+  background-color: #dbb85f;
+  box-shadow: 0 0 20px rgb(185, 64, 64);
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #dbb85f;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px red;
+  }
+}
+/*  images in third section */
+
+.foodHomeSmall,
+.foodHome {
+  width: 20em;
+  height: 20em;
+  position: relative;
+  z-index: 3;
+  margin-top: -3em;
+  margin-bottom: -7em;
+}
+
+.foodHome {
+  display: none;
+}
+
+.filter {
+  width: 16em;
+  height: 4em;
+  margin-top: -1.8em;
+}
+
+.comment {
+  width: 16em;
+  height: 14em;
+  margin-bottom: 2em;
+  margin-top: -1.8em;
+}
+
+/* Forth section second quote Puck */
+
+.puckDiv {
+  margin-top: 3em;
+}
+
+.puckLeves {
+  width: 100vw;
+  height: 6em;
+  position: relative;
+  bottom: -7em;
+  margin-bottom: 0;
+}
+
+/* Fourth section */
+.share {
+  background-color: #dbb85f;
+  padding: 3em 1em;
+}
+
+.share div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share h3 {
+  color: #2f3130;
+  font-size: 1.6em;
+  margin-bottom: 0;
+}
+
+.share p {
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1.4em;
+  color: white;
+  text-shadow: 0 0 30px black;
+}
+
+.share ul {
+  background-color: #2f3130;
+  padding: 2em 1em;
+  border-radius: 40px;
+  overflow: hidden;
+  padding-left: 2em;
+}
+
+.share li {
+  color: #dbb85f;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
+  line-height: 1.3em;
+  border-bottom: 1px solid white;
+  border-bottom-right-radius: 20px;
+}
+
+.secondButton {
+  border: 1px solid #2f3130;
+}
+.secondButton:hover {
+  background-color: #2f3130 !important;
+  border: 2px solid red;
+}
+
+@media (min-width: 1350px) {
+  .logo {
+    font-size: 1.5em;
+  }
+  .info div p {
+    font-size: 1.7em;
+  }
+  /* second section */
+  .firstQuote {
+    height: 90vh;
+  }
+  .firstQuote * {
+    font-size: 1.3em;
+  }
+
+  .cezar {
+    font-size: 1em;
+    width: 96vw;
+  }
+  /* third section */
+  .sugestion {
+    padding-top: 5em;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+  }
+
+  .filter {
+    width: 33em;
+    height: 7em;
+  }
+
+  .comment {
+    width: 33em;
+    height: 19em;
+  }
+
+  .sugestion div {
+    width: 50em;
+  }
+
+  .foodHome {
+    font-size: 2.5em;
+    padding-top: 1.5em;
+    display: block;
+  }
+
+  .sugestion section {
+    background-color: #2f3130;
+    height: 40em;
+    border-top-right-radius: 45%;
+    border-bottom-right-radius: 45%;
+    box-shadow: 0 0 20px #2f3130;
+    position: relative;
+    z-index: -1;
+  }
+
+  .section {
+    display: block;
+  }
+
+  .foodHomeSmall {
+    display: none;
+  }
+
+  .puckLeves {
+    bottom: unset;
+  }
+  .share {
+    font-size: 1.3em;
+  }
+
+  .share ul {
+    max-width: 40em;
+  }
+}

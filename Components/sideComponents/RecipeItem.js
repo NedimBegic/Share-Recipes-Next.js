@@ -44,7 +44,7 @@ const RecipeItem = (props) => {
   }
 
   return (
-    <li className={recipeStyle.list}>
+    <li onClick={showDetailed} className={recipeStyle.list}>
       <div className={recipeStyle.container}>
         <div className={recipeStyle.divImg}>
           <img src={props.image} alt="recipePhoto" />

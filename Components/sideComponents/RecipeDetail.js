@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styleDetail from "./RecipeDetail.module.css";
 import Likes from "../Layout/Likes";
 import Up from "./Up";
@@ -12,32 +12,46 @@ import Image from "next/image";
 
 const RecipeDetail = (props) => {
   /*  +++++++++++ states for component +++++++++++++++++ */
-  // paragraph that says if user liked
-  const [didYouLike, setDidYouLike] = useState(false);
   // state for showing error module
   const [isError, setIsError] = useState(false);
   // content of the error module
   const [contentTxt, setContentText] = useState("");
   // state to change comments
   const [comments, setComments] = useState(props.item.comments);
+  // state for voting info
+  const [voteDescription, setVoteDescription] = useState("");
 
   /* ++++++++++ use ref to store inputs */
   const nameRef = useRef();
   const commentRef = useRef();
   const allDiv = useRef();
 
-  /*++++++++++++  make the url of video embed */
-  // find the position of &
-  let index_ = props.item.video.indexOf("&");
-  // slice everything after &
-  let without_ = props.item.video.slice(0, index_);
-  // replace watch?v= with embed/
-  let embedUrl = without_.replace("watch?v=", "embed/");
+  // state for scroll to div
+  const [upDiv, setUpDiv] = useState(allDiv);
 
+  /*++++++++++++  make the url of video embed */
+  let embedUrl;
+  console.log(props.item.video);
+  if (props.item.video.length < 1) {
+    embedUrl = "https://www.youtube.com/embed/tJlzIJaokVY";
+    console.log(embedUrl);
+  } else {
+    // find the position of &
+    let index_ = props.item.video.indexOf("&");
+    // slice everything after &
+    let without_ = props.item.video.slice(0, index_);
+    // replace watch?v= with embed/
+    embedUrl = without_.replace("watch?v=", "embed/");
+  }
   /* +++++++++++++ function for hiding Error Module +++++++*/
   const onHideModuleHandler = () => {
     setIsError(false);
   };
+
+  /* ++++++++++++++div that is scrolled to */
+  useEffect(() => {
+    setUpDiv(allDiv.current);
+  }, []);
 
   /* +++++++++ change color for dificulty */
   let colorDiff = "";
@@ -51,9 +65,9 @@ const RecipeDetail = (props) => {
     case "hard":
       colorDiff = "#FF0E0E";
   }
-
   /* ++++++++++ handle like submit */
   async function onLikeSubmit(e) {
+    setVoteDescription("Loading...");
     const response = await fetch("/api/new-recipe", {
       method: "PUT",
       body: JSON.stringify({
@@ -64,7 +78,7 @@ const RecipeDetail = (props) => {
         "Content-Type": "application/json",
       },
     });
-    setDidYouLike(true);
+    setVoteDescription("You voted!");
   }
 
   /*+++++++++ adding a comment */
@@ -104,10 +118,10 @@ const RecipeDetail = (props) => {
     e.target.reset();
   }
 
-  /* +++++++++ scroling top  */
-  const scrollUp = () => {
-    allDiv.current.scrollIntoView({ behavior: "smooth" });
+  const handleScroll = () => {
+    upDiv.scrollIntoView({ behavior: "smooth" });
   };
+
   /* +++++++++++++++++ THE COMPONENT RENDER ++++++++++++++++++ */
   return (
     <div ref={allDiv} className={styleDetail.all}>
@@ -141,18 +155,27 @@ const RecipeDetail = (props) => {
         <h4>Ingredients list:</h4>
         <div className={styleDetail.list}>
           <div className={styleDetail.ingList}>
-            {props.item.ingredients.map((item) => (
-              <li key={Math.random() * 100}>{item}</li>
-            ))}
+            {props.item.ingredients.length > 1 ? (
+              props.item.ingredients.map((item) => (
+                <li key={Math.random() * 100}>{item}</li>
+              ))
+            ) : (
+              <p className={styleDetail.noIngredients}>Secret ingredients</p>
+            )}
           </div>
         </div>
       </div>
       <div className={styleDetail.steps}>
         <h4>Steps:</h4>
         <ol>
-          {props.item.steps.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
+          {props.item.steps.length > 0 && props.item.steps[0].length > 2 ? (
+            props.item.steps.map((item, i) => <li key={i}>{item}</li>)
+          ) : (
+            <p className={styleDetail.noSteps}>
+              {" "}
+              No description given! Adopt, improvise, overcome!!!{" "}
+            </p>
+          )}
         </ol>
       </div>
       <iframe
@@ -182,7 +205,7 @@ const RecipeDetail = (props) => {
             className={styleDetail.smiles}
           />
         </div>
-        {didYouLike && <span>You voted!</span>}{" "}
+        <span>{voteDescription}</span>
       </div>
       <div className={styleDetail.comments}>
         <h4>Comments</h4>
@@ -216,8 +239,8 @@ const RecipeDetail = (props) => {
       ) : (
         <p>No comments</p>
       )}
-      <Up element={allDiv.current} />
-      <Image src={foodLogo} className={styleDetail.foodLogo} />
+      <Up onClick={handleScroll} />
+      <Image src={foodLogo} className={styleDetail.foodLogo} alt="food logo" />
     </div>
   );
 };

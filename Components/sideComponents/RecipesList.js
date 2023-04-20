@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState, useRef, useEffect } from "react";
 import recipeStyle from "../sideComponents/RecipesList.module.css";
 import RecipeItem from "./RecipeItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,11 @@ import { faCake } from "@fortawesome/free-solid-svg-icons";
 import { faBowlRice } from "@fortawesome/free-solid-svg-icons";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { faCarrot } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import background from "../../public/background.png";
+import saladBack from "../../public/background2.png";
+import backOption from "../../public/backOption.jpg";
+import Up from "./Up";
 
 // initial render values
 let initialRender = {
@@ -59,6 +64,18 @@ const reducerRender = (state, action) => {
   return initialRender;
 };
 const RecipesList = (props) => {
+  /* ++++++++++ state for first do to scroll to */
+  const forUp = useRef();
+  const [upDiv, setUpDiv] = useState(forUp.current);
+  /*  enable smooth scroll */
+  /* ++++++++++++++div that is scrolled to */
+  useEffect(() => {
+    setUpDiv(forUp.current);
+  }, []);
+
+  const handleScroll = () => {
+    upDiv.scrollIntoView({ behavior: "smooth" });
+  };
   const [render, dispatchRender] = useReducer(reducerRender, initialRender);
   // dispatch function for rendering content
   const renderBurgers = () => {
@@ -79,7 +96,22 @@ const RecipesList = (props) => {
   // useState to render content on filter
   // set initial to props.recipes and change it on button click to filter from id in button
   return (
-    <div>
+    <div ref={forUp}>
+      <Image
+        className={recipeStyle.backgroundImg}
+        src={backOption}
+        alt="background images"
+      />
+      <Image
+        className={recipeStyle.backgroundImg2}
+        src={background}
+        alt="background images"
+      />
+      <Image
+        className={recipeStyle.saladBack}
+        src={saladBack}
+        alt="background images"
+      />
       <div className={recipeStyle.filterType}>
         <button
           onClick={renderBurgers}
@@ -199,20 +231,23 @@ const RecipesList = (props) => {
               />
             ))}
         {render.all &&
-          props.recipes.map((recipe) => (
-            <RecipeItem
-              id={recipe.id}
-              key={recipe.id}
-              image={recipe.image}
-              name={recipe.name}
-              type={recipe.type}
-              time={recipe.time}
-              difficulty={recipe.difficulty}
-              date={recipe.date}
-              likes={recipe.likes}
-            />
-          ))}
+          props.recipes
+            .reverse()
+            .map((recipe) => (
+              <RecipeItem
+                id={recipe.id}
+                key={recipe.id}
+                image={recipe.image}
+                name={recipe.name}
+                type={recipe.type}
+                time={recipe.time}
+                difficulty={recipe.difficulty}
+                date={recipe.date}
+                likes={recipe.likes}
+              />
+            ))}
       </ul>
+      <Up onClick={handleScroll} />
     </div>
   );
 };

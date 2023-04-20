@@ -15,7 +15,6 @@ export async function getStaticProps() {
   const recipesCollection = db.collection("recipes");
   const recipes = await recipesCollection.find().toArray();
   client.close();
-  console.log(recipes);
 
   return {
     // it must have a props property, which will go to our HomePage component

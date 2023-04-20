@@ -2,7 +2,7 @@
   width: 100%;
   overflow-y: hidden;
   height: 4em;
-  background-color: #9c3116;
+  background-color: #910d0f;
   color: #dbb85f;
   display: flex;
   flex-direction: row;
@@ -13,7 +13,8 @@
   box-shadow: 0 0 20px #dbb85f;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  opacity: 0.9;
+  position: relative;
+  z-index: 10;
 }
 
 .header h1 {

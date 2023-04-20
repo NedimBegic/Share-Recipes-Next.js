@@ -17,6 +17,10 @@
     opacity: 1;
   }
 }
+/*  unvalid input */
+.unvalid {
+  border: 2px solid red !important;
+}
 
 .imgBack {
   position: fixed;
@@ -299,6 +303,15 @@
   background-color: #dbb85f;
   box-shadow: 0 0 20px rgb(185, 64, 64);
 }
+
+.note {
+  color: black;
+  font-size: 1.3em;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  text-shadow: 0 0 20px black;
+  font-weight: bold;
+}
 @media (min-width: 500px) {
   .all form > textarea {
     width: 60%;
@@ -391,5 +404,9 @@
 
   .all p {
     margin-left: 6em;
+  }
+
+  .note {
+    color: red;
   }
 }

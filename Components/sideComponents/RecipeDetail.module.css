@@ -11,6 +11,10 @@
   margin-bottom: 0;
 }
 
+.description {
+  width: 90%;
+}
+
 .description p {
   padding: 1em;
   padding-top: 0;
@@ -311,7 +315,14 @@
 .foodLogo {
   display: none;
 }
+/* for no ingredients and steps */
+.noSteps {
+  padding: 1em;
+}
 
+.noIngredients {
+  font-size: 1.3em;
+}
 @media (min-width: 1000px) {
   .all img {
     height: 30em;

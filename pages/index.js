@@ -1,5 +1,6 @@
-const Home = () => {
-  return <h1>hi</h1>;
+import Home from "@/Components/sideComponents/Home";
+const Homepage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default Homepage;

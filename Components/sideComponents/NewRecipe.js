@@ -1,10 +1,12 @@
 // form for adding user data, sending then to the parent component
 
 import styleNewRecipe from "../sideComponents/NewRecipe.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import foodBack from "../../public/foodBack.png";
 import Image from "next/image";
-
+import ErrorModule from "./ErrorModule";
+import Up from "./Up";
+import { useRouter } from "next/router";
 // component for adding ingredients
 const Ingredient = (props) => {
   return (
@@ -40,6 +42,19 @@ const ProcedureSteps = (props) => {
 };
 
 const NewRecipe = (props) => {
+  const router = useRouter();
+  /* ++++++++++ state for first do to scroll to */
+  const allDiv = useRef();
+  const [upDiv, setUpDiv] = useState(allDiv.current);
+  /*  enable smooth scroll */
+  /* ++++++++++++++div that is scrolled to */
+  useEffect(() => {
+    setUpDiv(allDiv.current);
+  }, []);
+
+  const handleScroll = () => {
+    upDiv.scrollIntoView({ behavior: "smooth" });
+  };
   // refs for user input
   const nameRef = useRef();
   const descriptionRef = useRef();
@@ -51,6 +66,9 @@ const NewRecipe = (props) => {
   const imgRef = useRef();
   const videoRef = useRef();
 
+  /* ++++ state for error module */
+  const [isError, setIsError] = useState(false);
+  const [errorContent, setErrorContent] = useState("");
   // for ingredient list
   const [ingredientsList, setIngredientsList] = useState([
     <Ingredient key={0} />,
@@ -80,10 +98,27 @@ const NewRecipe = (props) => {
     ]);
   };
 
+  /* +++++++++++++ function for hiding Error Module +++++++*/
+  const onHideModuleHandler = () => {
+    setIsError(false);
+  };
+  /* ++++++++++++++++++++++ THE FORM SUBMITION ++++++++++++++++++++++++ */
   const onSubmitFrom = (e) => {
     e.preventDefault();
 
-    // ..............for ingredients
+    /* ++++++++++++ validation of the form */
+    if (nameRef.current.value.length < 4) {
+      setIsError(true);
+      setErrorContent("Title must be min. 4 letters long");
+      return;
+    }
+    if (descriptionRef.current.value.length < 1) {
+      setIsError(true);
+      setErrorContent("Write something in description");
+      return;
+    }
+
+    // ..............for ingredients values
     let ingredientInputs = document.querySelectorAll(".ingredient");
     let quantityInputs = document.querySelectorAll(".quantity");
     // obj to hold values
@@ -123,7 +158,9 @@ const NewRecipe = (props) => {
       origin: originRef.current.value,
       difficulty: difficultyRef.current.value,
       time: prepRefH.current.value + ":" + prepRefM.current.value,
-      image: imgRef.current.value,
+      image:
+        imgRef.current.value ||
+        "https://food.unl.edu/newsletters/images/mise-en-plase.jpg",
       video: videoRef.current.value,
       steps: stepsValues,
       ingredients: ing,
@@ -135,13 +172,26 @@ const NewRecipe = (props) => {
     props.giveData(formInfo);
   };
   return (
-    <div className={styleNewRecipe.all}>
-      {<Image src={foodBack} className={styleNewRecipe.imgBack} />}
+    <div ref={allDiv} className={styleNewRecipe.all}>
+      {
+        <Image
+          src={foodBack}
+          className={styleNewRecipe.imgBack}
+          alt="background"
+        />
+      }
+      {isError && (
+        <ErrorModule content={errorContent} hideModule={onHideModuleHandler} />
+      )}
       <h1>Add a Recipe</h1>
       <form onSubmit={onSubmitFrom}>
         <input
           ref={nameRef}
-          className={styleNewRecipe.title}
+          className={`${
+            errorContent == "Title must be min. 4 letters long"
+              ? styleNewRecipe.unvalid + " " + styleNewRecipe.title
+              : styleNewRecipe.title
+          }`}
           type="text"
           name="Recipe Title"
           placeholder="Recipe Title"
@@ -149,6 +199,13 @@ const NewRecipe = (props) => {
         <h2>Short description</h2>
         <textarea
           ref={descriptionRef}
+          style={{
+            border: `${
+              errorContent == "Write something in description"
+                ? "2px solid red"
+                : "none"
+            }`,
+          }}
           rows="9"
           cols="39"
           placeholder="Write a short description of your recipe"
@@ -238,10 +295,16 @@ const NewRecipe = (props) => {
             placeholder="Insert youtube video url"
           />
         </div>
+        <span className={styleNewRecipe.note}>
+          Note: When you post a new recipe please wait 10s before entering to
+          recipe!!!
+        </span>
         <button className={styleNewRecipe.submit} type="submit">
           Submit recipe
         </button>
       </form>
+
+      <Up onClick={handleScroll} />
     </div>
   );
 };
