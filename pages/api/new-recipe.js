@@ -3,9 +3,7 @@ import { MongoClient } from "mongodb";
 async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
-    const client = await MongoClient.connect(
-      "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
-    );
+    const client = await MongoClient.connect(process.env.DB_MONGO);
     const db = client.db();
     // get the collection of the DB
     const recipesCollection = db.collection("recipes");
@@ -23,9 +21,7 @@ async function handler(req, res) {
     if (req.body.name && req.body.vote) {
       let itemName = req.body.name;
       let vote = req.body.vote;
-      const client = await MongoClient.connect(
-        "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
-      );
+      const client = await MongoClient.connect(process.env.DB_MONGO);
       const db = client.db();
       // get the collection of the DB
       const recipesCollection = db.collection("recipes");
@@ -39,9 +35,7 @@ async function handler(req, res) {
 
     if (req.body.userName && req.body.comment) {
       let itemName = req.body.name;
-      const client = await MongoClient.connect(
-        "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
-      );
+      const client = await MongoClient.connect(process.env.DB_MONGO);
       const db = client.db();
       // get the collection of the DB
       const recipesCollection = db.collection("recipes");

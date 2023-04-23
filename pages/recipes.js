@@ -7,9 +7,7 @@ const Recipes = (props) => {
 };
 
 export async function getStaticProps() {
-  const client = await MongoClient.connect(
-    "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.DB_MONGO);
   const db = client.db();
   // get the collection of the DB
   const recipesCollection = db.collection("recipes");
@@ -42,7 +40,7 @@ export async function getStaticProps() {
     // proprety for for increment static generation
     // put a number to re-evaluate the data in seconds
     // we use it when the date is changed more frequently
-    revalidate: 10,
+    revalidate: 5,
   };
 }
 export default Recipes;
