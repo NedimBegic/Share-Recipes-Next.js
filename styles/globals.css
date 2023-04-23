@@ -6,5 +6,8 @@ body {
 
 html * {
   scroll-behavior: smooth !important;
+}
+
+p {
   font-family: "Montserrat", sans-serif;
 }
