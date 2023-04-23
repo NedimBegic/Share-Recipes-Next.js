@@ -6,4 +6,5 @@ body {
 
 html * {
   scroll-behavior: smooth !important;
+  font-family: "Montserrat", sans-serif;
 }
