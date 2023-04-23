@@ -15,11 +15,11 @@
 
 @keyframes listup {
   from {
-    transform: rotateY(-90deg);
+    transform: translateY(-10%);
   }
 
   to {
-    transform: rotateY(0deg);
+    transform: translateY(0);
   }
 }
 
