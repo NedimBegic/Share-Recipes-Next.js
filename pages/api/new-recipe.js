@@ -4,7 +4,7 @@ async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
     const client = await MongoClient.connect(
-      `mongodb+srv://${process.env.DB_USER}:${process.env.DB.PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
+      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
     );
     const db = client.db();
     // get the collection of the DB
@@ -24,7 +24,7 @@ async function handler(req, res) {
       let itemName = req.body.name;
       let vote = req.body.vote;
       const client = await MongoClient.connect(
-        `mongodb+srv://${process.env.DB_USER}:${process.env.DB.PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
+        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
       );
       const db = client.db();
       // get the collection of the DB
@@ -40,7 +40,7 @@ async function handler(req, res) {
     if (req.body.userName && req.body.comment) {
       let itemName = req.body.name;
       const client = await MongoClient.connect(
-        `mongodb+srv://${process.env.DB_USER}:${process.env.DB.PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
+        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
       );
       const db = client.db();
       // get the collection of the DB
