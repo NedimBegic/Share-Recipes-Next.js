@@ -7,7 +7,7 @@ const RecipeDetailes = (props) => {
 
 export async function getStaticPaths() {
   const client = await MongoClient.connect(
-    "mongodb+srv://nedim:nedim123@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@social.j4binvl.mongodb.net/recipes?retryWrites=true&w=majority`
   );
   const db = client.db();
   // get the collection of the DB
