@@ -6,9 +6,10 @@ body {
 
 html * {
   scroll-behavior: smooth !important;
+  font-family: "Roboto", sans-serif;
 }
 
 p {
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 }
