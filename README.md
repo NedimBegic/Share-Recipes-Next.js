@@ -1,38 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Share Recipes</h1>
+<p>This project was made to practice Next.js with the getStaticProp and getStaticPath pre-rendering functions. It is a site about sharing your recipes, rating and commenting on others. The user can fill up a form in the Add Recipe section and make a post request to share his own idea or visit the Recipes section where he makes a get request to see, rate, or comment on other ideas.</p>
+link to the page: https://sharerecipes1.vercel.app/
+<h2>What did I learn:</h2>
+<ul>
+<li>Making a dynamic input for ingredients and steps of preparation</li>
+<li>Making functionality for the rating of the recipe by showing starts that fill up with the average amount of likes stored inside an array in MongoDB.</li>
+<li>Making put request and posting a comment on a recipe</li>
+<li>Using the framer motion library to add various animations</li>
+<li>Applying filter functionality to the recipe list</li>
+<li>Writing code to convert youtube video url to embed</li>
+<li>Handling simple validation, error modules, and pop-ups to inform the user  that the vote was successful</li>
+</ul>
 
-## Getting Started
+<img src="https://i.ibb.co/2NQJ7zC/sharere.png" width=1100 height=800 alt="image"/>
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Things I want to add:</<h2>
+<ul>
+<li>Authentification</li>
+<li>Better color design for the homepage</li>
+</ul>
